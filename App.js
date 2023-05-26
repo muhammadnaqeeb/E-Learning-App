@@ -7,62 +7,23 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { createDrawerNavigator } from '@react-navigation/drawer';
 import 'react-native-gesture-handler'
 
+import Login from './screens/login_screen';
+import SignUp from './screens/signup_screen';
+import Home from './screens/home_screen';
+import Details from './screens/details_screen';
+
 const Stack = createNativeStackNavigator();
 const BottomTab = createBottomTabNavigator();
 const DrawerNav = createDrawerNavigator();
 
-function Login({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text>Login</Text>
-      <Button title='Need an account? signup' onPress={
-        () => navigation.navigate("Tab")
-      }></Button>
-    </View>
-  );
-}
 
-function SignUp({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text>SignUp</Text>
-      <Button title='Need to login' onPress={
-        () => navigation.navigate("login")
-      }></Button>
-    </View>
-  );
-}
 
-function Home({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text>Home Page</Text>
-      <Button title='Logout' onPress={
-        () => navigation.navigate("login")
-      }></Button>
-    </View>
-  );
-}
-function Details() {
-  return (
-    <View style={styles.container}>
-      <Text>Details</Text>
-    </View>
-  );
-}
 
-function Profile() {
-  return (
-    <View style={styles.container}>
-      <Text>Profile</Text>
-    </View>
-  );
-}
 
 function Tab() {
   return (
     <BottomTab.Navigator>
-      <BottomTab.Screen name='Home' component={Drawer} />
+      <BottomTab.Screen options={{headerShown:false}} name='Home' component={Drawer} />
       <BottomTab.Screen name='Details' component={Details} />
     </BottomTab.Navigator>
   );
@@ -72,7 +33,7 @@ function Tab() {
 function Drawer() {
   return (
     <DrawerNav.Navigator>
-      <DrawerNav.Screen name='Profile' component={Profile} />
+      <DrawerNav.Screen name='Home' component={Home} />
       {/* can have more Drawer */}
     </DrawerNav.Navigator>
   );
@@ -89,11 +50,4 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+
